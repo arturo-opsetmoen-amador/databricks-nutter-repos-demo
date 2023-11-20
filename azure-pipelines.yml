@@ -32,7 +32,7 @@ trigger:
 #   branches:
 #     include:
 #       - master
-#       - champion_prep
+#       - releases
 #   paths:
 #     exclude:
 #       - README.md
@@ -42,7 +42,7 @@ stages:
 - stage: onPush
   condition: |
     and(
-      ne(variables['Build.SourceBranch'], 'refs/heads/releases'),
+      ne(variables['Build.SourceBranch'], 'refs/heads/champion_prep'),
       not(startsWith(variables['Build.SourceBranch'], 'refs/tags/v'))
     )
   jobs:
@@ -99,7 +99,7 @@ stages:
   jobs:
   - job: onReleaseJob
     pool:
-      vmImage: 'ubuntu-20.04'
+      vmImage: 'ubuntu-22.04'
 
     steps:
       - script: env | sort
