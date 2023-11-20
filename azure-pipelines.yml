@@ -32,7 +32,7 @@ trigger:
 #   branches:
 #     include:
 #       - master
-#       - releases
+#       - champion_prep
 #   paths:
 #     exclude:
 #       - README.md
