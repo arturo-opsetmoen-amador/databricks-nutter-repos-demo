@@ -1,4 +1,8 @@
 # Databricks notebook source
+# TEST EDIT
+
+# COMMAND ----------
+
 # MAGIC %pip install -U nutter chispa
 
 # COMMAND ----------

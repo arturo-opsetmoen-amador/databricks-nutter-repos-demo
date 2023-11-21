@@ -1,4 +1,9 @@
 # Databricks notebook source
+# DBTITLE 1,Dummy cell
+# Trigger CI/CD pipe
+
+# COMMAND ----------
+
 # MAGIC %pip install -U nutter chispa
 
 # COMMAND ----------
@@ -65,3 +70,7 @@ print(result.to_string())
 is_job = dbutils.notebook.entry_point.getDbutils().notebook().getContext().currentRunId().isDefined()
 if is_job:
   result.exit(dbutils)
+
+# COMMAND ----------
+
+# trigger dummy commit
