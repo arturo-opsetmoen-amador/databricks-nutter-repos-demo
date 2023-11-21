@@ -1,4 +1,9 @@
 # Databricks notebook source
+# DBTITLE 1,Dummy cell
+# Trigger CI/CD pipe
+
+# COMMAND ----------
+
 # MAGIC %pip install -U nutter chispa
 
 # COMMAND ----------
