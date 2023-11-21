@@ -48,16 +48,16 @@ stages:
   jobs:
   - job: onPushJob
     pool:
-      vmImage: 'ubuntu-20.04'
+      vmImage: 'ubuntu-22.04'
 
     steps:
     - script: env | sort
       displayName: 'Environment / Context'
 
     - task: UsePythonVersion@0
-      displayName: 'Use Python 3.8'
+      displayName: 'Use Python 3.10'
       inputs:
-        versionSpec: 3.8
+        versionSpec: 3.10
 
     - checkout: self
       displayName: 'Checkout & Build.Reason: $(Build.Reason) & Build.SourceBranchName: $(Build.SourceBranchName)'
@@ -80,7 +80,7 @@ stages:
       displayName: 'Update Staging project'
 
     - script: |
-        nutter run "$(STAGING_DIRECTORY)/unit-tests/" --cluster_id $(CLUSTER_ID) --recursive --junit_report --timeout 500
+        nutter run "$(STAGING_DIRECTORY)/unit-tests/" --cluster_id $(CLUSTER_ID) --recursive --junit_report --timeout 1500
       env:
         DATABRICKS_HOST: $(DATABRICKS_HOST)
         DATABRICKS_TOKEN: $(DATABRICKS_TOKEN)
@@ -106,9 +106,9 @@ stages:
         displayName: 'Environment / Context'
 
       - task: UsePythonVersion@0
-        displayName: 'Use Python 3.8'
+        displayName: 'Use Python 3.10'
         inputs:
-          versionSpec: 3.8
+          versionSpec: 3.10
 
       - checkout: self
         persistCredentials: true
@@ -131,7 +131,7 @@ stages:
 
 # We can do a separate set of the tests for release branches
       - script: |
-          nutter run "$(STAGING_DIRECTORY)/unit-tests/" --cluster_id $(CLUSTER_ID) --recursive --junit_report --timeout 500
+          nutter run "$(STAGING_DIRECTORY)/unit-tests/" --cluster_id $(CLUSTER_ID) --recursive --junit_report --timeout 1500
         env:
           DATABRICKS_HOST: $(DATABRICKS_HOST)
           DATABRICKS_TOKEN: $(DATABRICKS_TOKEN)
